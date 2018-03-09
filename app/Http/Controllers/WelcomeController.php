@@ -15,14 +15,27 @@ class WelcomeController extends Controller
     {
         $homeContent=view('pages.home');
         $categoryContent=view('pages.category');
+        $friendsContent=view('pages.friends');
         return view('master')
             ->with('homeContent',$homeContent)
-            ->with('categoryContent',$categoryContent);
+            ->with('categoryContent',$categoryContent)
+            ->with('FriendsContent',$friendsContent);
     }
     
     public function portfolio(){
         $portfolioContent=view('pages.portfolio');
-        return view('master')->with('portfolioContent',$portfolioContent);
+        $friendsContent=view('pages.friends');
+        return view('master')
+            ->with('portfolioContent',$portfolioContent)
+            ->with('FriendsContent',$friendsContent);
+    }
+    
+    public function services(){
+        $servicesContent=view('pages.services');
+        $categoryContent=view('pages.category');
+        return view('master')
+            ->with('servicesContent',$servicesContent)
+            ->with('categoryContent',$categoryContent);
     }
 
     /**

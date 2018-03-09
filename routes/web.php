@@ -13,3 +13,4 @@
 
 Route::get('/','WelcomeController@index'); 
 Route::get('/portfolio','WelcomeController@portfolio'); 
+Route::get('/services','WelcomeController@services'); 
