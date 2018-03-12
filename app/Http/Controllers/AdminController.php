@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -16,8 +18,24 @@ class AdminController extends Controller
         return view('admin.admin_login');
     }
     
-    public function admin_panel(){
-        return view('admin.admin_master');
+    public function admin_panel(Request $request){
+        $admin_email_address=$request->admin_email_address;
+        $admin_password=$request->admin_password;
+        $result=DB::table('tbl_admin')
+            ->where('admin_email_address',$admin_email_address )
+            ->where('admin_password',$admin_password )
+            ->first();
+        if(isset($result)){
+           return view('admin.admin_master'); 
+        }else{
+            return Redirect::to('/admin');
+        }
+        
+//        var_dump($admin_email_address);
+//        die();
+        
+        
+        
     }
 
     /**
