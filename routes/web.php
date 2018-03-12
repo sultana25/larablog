@@ -14,3 +14,8 @@
 Route::get('/','WelcomeController@index'); 
 Route::get('/portfolio','WelcomeController@portfolio'); 
 Route::get('/services','WelcomeController@services'); 
+
+//admin panel start
+Route::get('/admin','AdminController@index');
+Route::post('/dashboard','AdminController@dashboard');
+//stop admin panel
