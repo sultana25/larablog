@@ -57,7 +57,7 @@
 					</div>
 					<h2>Login to your account</h2>
 					
-					{!! Form::open(['url' => '/dashboard','method'=>'post']) !!}
+					{!! Form::open(['url' => '/admin-panel','method'=>'post']) !!}
 						<fieldset>
 							
 							<div class="input-prepend" title="Username">
