@@ -18,4 +18,6 @@ Route::get('/services','WelcomeController@services');
 //admin panel start
 Route::get('/admin','AdminController@index');
 Route::post('/admin-panel','AdminController@admin_panel');
+Route::get('/dashboard','SuperAdminController@index');
+Route::get('/logout','SuperAdminController@logout');
 //stop admin panel

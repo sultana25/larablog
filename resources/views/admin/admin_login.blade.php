@@ -55,6 +55,24 @@
 						<a href="index.html"><i class="halflings-icon home"></i></a>
 						<a href="#"><i class="halflings-icon cog"></i></a>
 					</div>
+					<h3 style='color:red'>
+                    <?php
+					    $exception=Session::get('exception');
+					    if($exception){
+					    echo $exception;
+					    Session::put('exception',null);
+					    }
+                    ?>
+					</h3>
+					<h3 style='color:green'>
+                    <?php
+					    $message=Session::get('message');
+					    if($message){
+					    echo $message;
+					    Session::put('message',null);
+					    }
+                    ?>
+					</h3>
 					<h2>Login to your account</h2>
 					
 					{!! Form::open(['url' => '/admin-panel','method'=>'post']) !!}

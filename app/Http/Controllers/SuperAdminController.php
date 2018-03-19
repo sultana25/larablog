@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 
-class AdminController extends Controller
+class SuperAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,31 +15,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.admin_login');
+        return view('admin.admin_master');
     }
-    
-    public function admin_panel(Request $request){
-        $admin_email_address=$request->admin_email_address;
-        $admin_password=$request->admin_password;
-        $result=DB::table('tbl_admin')
-            ->where('admin_email_address',$admin_email_address )
-            ->where('admin_password',$admin_password )
-            ->first();
-        if(isset($result)){
-            Session::put('admin_id',$result->admin_id);
-            Session::put('admin_name',$result->admin_name);
-            return Redirect::to('/dashboard');
-           //return view('admin.admin_master'); 
-        }else{
-            Session::put('exception','Email or password is invalid');
-            return Redirect::to('/admin');
-        }
-        
-//        var_dump($admin_email_address);
-//        die();
-        
-        
-        
+    public function logout(){
+        Session::put('admin_id',null);
+        Session::put('admin_name',null);
+        Session::put('message','Succesfully logout!');
+        return Redirect::to('/admin');
     }
 
     /**
